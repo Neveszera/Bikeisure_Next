@@ -1,4 +1,4 @@
-import Header from '@/components/Header/Header'
+import Header from '@/components/Cabecalho/Cabecalho'
 
 export const metadata = {
   title: 'Bikeisure',
@@ -9,7 +9,11 @@ export default function RootLayout({ children }) {
   return (
     <html lang="pt-br">
       <Header/>
-      <body>{children}</body>
+      <body>{children}
+      
+      
+      
+      </body>
     </html>
   )
 }
