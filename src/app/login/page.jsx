@@ -1,3 +1,8 @@
+"use client"
+
+import Link from 'next/link';
+import "../../styles/Login.css"
+
 export default function Login() {
 
     return (
@@ -11,23 +16,23 @@ export default function Login() {
                 <span></span>
                 <label>Email</label>
               </div>
-  
+
               <div className="txt_field">
                 <input type="password" required name="senha" maxLength="32" />
                 <span></span>
                 <label>Senha</label>
               </div>
-  
+
               <div className="pass">Esqueceu a senha? Clique aqui!</div>
               <input type="submit" value="Logar" />
               <div className="signup_link">
-                Não tem uma conta? <Link to="/cadastro">Cadastre-se</Link>
+                Não tem uma conta? <Link href="/cadastroPessoa">Cadastre-se</Link>
               </div>
             </form>
           </div>
         </section>
-  
+
       </>
-  
+
     );
   }
