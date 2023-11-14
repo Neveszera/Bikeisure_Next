@@ -1,10 +1,16 @@
+"use client"
+
+import Cabecalho from '@/components/Cabecalho/Cabecalho'
+import Rodape from '@/components/Rodape/Rodape'
+
 import React from 'react';
-import Neves from '../../../public/img/Neves.png'
+import Neves from '../../../public/img/Neves.jpg'
 import Renata from '../../../public/img/Renata.jpeg'
 import Daniel from '../../../public/img/Daniel.png'
 import Sampaio from '../../../public/img/Sampaio.png'
 import Rafael from '../../../public/img/Rafael.jpg'
-
+import Image from 'next/image';
+import "../../styles/Sobre.css"
 
 const membrosDaEquipe = [
     {
@@ -72,9 +78,10 @@ export default function Sobre() {
 
     return (
         <>
-            <section>
-                <div>
-                    <div>
+        <Cabecalho/>
+            <section className="sobre">
+                <div className="sobre-content">
+                    <div className="sobre-text">
                         <h1>Sobre a Bikeisure</h1>
                         <p>
                             A Bikeisure oferece proteção confiável e personalizada para ciclistas em todo o país. Nosso compromisso com a excelência, integridade e inovação nos torna a escolha ideal para quem busca segurança durante suas pedaladas.
@@ -85,31 +92,45 @@ export default function Sobre() {
                         <br />
                         <h1>Nossa Equipe:</h1>
                     </div>
+                    <div className="sobre-image">
+                        <Image
+                            src="/img/ciclista2.png"
+                            alt="Desenho Ciclista"
+                            width={500}
+                            height={500}
+                        />
+                    </div>
                 </div>
             </section>
 
-            <section>
+            <section className="equipe">
                 {membrosDaEquipe.map((membro) => (
-                    <div style={{ backgroundColor: membro.cor }} key={membro.id}>
-                        <img src={membro.imagem} alt={`Foto de ${membro.nome}`} />
+                    <div className="card" style={{ backgroundColor: membro.cor }} key={membro.id}>
+                        <Image
+                            src={membro.imagem}
+                            alt={`Foto de ${membro.nome}`}
+                            width={500}
+                            height={500}
+                        />
                         <h3>{membro.nome}</h3>
                         <p>{membro.rm}</p>
                         <p>{membro.turma}</p>
                         <p>{membro.funcao}</p>
-                        <div>
+                        <div className="redes-sociais">
                             <a href={membro.linkedin} target="_blank" rel="noopener noreferrer">
-                                <i ></i>
+                                <i className="fab fa-linkedin"></i>
                             </a>
                             <a href={membro.instagram} target="_blank" rel="noopener noreferrer">
-                                <i ></i>
+                                <i className="fab fa-instagram"></i>
                             </a>
                             <a href={membro.github} target="_blank" rel="noopener noreferrer">
-                                <i></i>
+                                <i className="fab fa-github"></i>
                             </a>
                         </div>
                     </div>
                 ))}
             </section>
+            <Rodape/>
         </>
 
     );
