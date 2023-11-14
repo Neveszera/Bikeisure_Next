@@ -1,8 +1,8 @@
 import React from 'react';
 import { FaInstagram, FaFacebook, FaWhatsapp, FaGithub } from 'react-icons/fa';
+import "../../styles/Rodape.css" 
 
-
-const Footer = () => {
+const Rodape = () => {
   return (
     <footer className="footer">
       <div className="footer-content">
@@ -41,3 +41,4 @@ const Footer = () => {
     </footer>
   );
 }
+export default Rodape;
