@@ -4,6 +4,7 @@ import Cabecalho from '@/components/Cabecalho/Cabecalho'
 import Rodape from '@/components/Rodape/Rodape'
 import React from 'react';
 import "../../styles/Contato.css"
+import "../globals.css"
 
 export default function Contato() {
   return (

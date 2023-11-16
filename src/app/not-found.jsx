@@ -4,7 +4,6 @@ import "../styles/not-found.css";
 
 
 export default function NotFound() {
-  document.title = "Erro 404";
 
   return (
     <div className="error-container">

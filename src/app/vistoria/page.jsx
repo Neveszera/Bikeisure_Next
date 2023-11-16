@@ -1,17 +1,15 @@
 "use client"
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import Webcam from 'react-webcam';
 import dynamic from 'next/dynamic';
 import Modal from 'react-modal';
 import * as tf from '@tensorflow/tfjs';
 import * as cocossd from '@tensorflow-models/coco-ssd';
 import Tesseract from 'tesseract.js';
 import styles from '../../styles/vistoria.module.css';
+import '../globals.css';
 
-// Importa dinamicamente o componente do React Webcam apenas no lado do cliente
-const Webcam = dynamic(() => import('react-webcam'), { ssr: false });
-
-Modal.setAppElement('#root');
 
 const Vistoria = () => {
   const [capturedImage, setCapturedImage] = useState(null);
@@ -20,7 +18,7 @@ const Vistoria = () => {
   const [currentStep, setCurrentStep] = useState(1);
   const [showInstructionsModal, setShowInstructionsModal] = useState(true);
   const [isCapturing, setIsCapturing] = useState(false);
-  const webcamRef = React.useRef(null);
+  const webcamRef = useRef(null);
   const [validatedImages, setValidatedImages] = useState([]);
   const [validationFailed, setValidationFailed] = useState(false);
   const [bicycleDetected, setBicycleDetected] = useState(false);
@@ -83,7 +81,7 @@ const Vistoria = () => {
           setBicycleDetected(true);
           isValid = true;
         }
-      } else if (currentStep === 2 || currentStep === 3 || currentStep === 4) {
+      } else if (currentStep >= 2 && currentStep <= 4) {
         isValid = predictions.some(
           (prediction) =>
             prediction.class === 'bicycle' && prediction.score >= 0.5
@@ -95,8 +93,9 @@ const Vistoria = () => {
         setValidatedImages((prevImages) => [...prevImages, imageSrc]);
         setValidationFailed(false);
       } else {
-        setModalMessage('Foto Reprovada! ' + stepMessages[currentStep - 1]);
-        setModalMessage('Foto não atende aos critérios, tire outra foto');
+        setModalMessage(
+          'Foto Reprovada! ' + stepMessages[currentStep - 1] + '. Tire outra foto.'
+        );
         setValidationFailed(true);
       }
     }
@@ -143,10 +142,11 @@ const Vistoria = () => {
       <InstructionsModal />
       <div className={styles['vistoria-header']}>
         <h1>Bikeisure</h1>
-        <h3>Etapa {currentStep} - 5</h3>
+        <h3>Etapa 3 - 3</h3>
         <p>
           Nessa etapa faça a captura de fotos da sua bicicleta para a validação e continuação do processo de abertura
         </p>
+        <h3>Foto {currentStep} - 5</h3>
       </div>
 
       <div className={styles['vistoria-content']}>

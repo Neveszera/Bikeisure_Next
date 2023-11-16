@@ -11,18 +11,19 @@ import Image from 'next/image';
 import "../styles/Home.css";
 import "./globals.css"
 
+
 export default function Home() {
   return (
     <>
-    <Cabecalho/>
+      <Cabecalho />
       <section className="hero">
         <div className="hero-content">
           <div className="hero-image">
             <Image
               src="/img/ciclista.png"
               alt="Desenho Ciclista"
-              width={500}
-              height={500}
+              width={700}
+              height={700}
             />
           </div>
           <div className="hero-text">
@@ -35,12 +36,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className='planos'>
+      <section className="planos">
         <PlanosCarousel />
       </section>
 
       <Faq />
-      <Rodape/>
+      <Rodape />
     </>
   );
 }

@@ -45,12 +45,27 @@ const CadastroBike = () => {
             outrasNotasFiscais: null,
         },
         validationSchema: schema,
-        onSubmit: (values) => {
-            // Aqui vamos enviar os dados para o servidor.
-            // Mas, por enquanto, apenas mostraremos os dados no console.
-            console.log('Dados da Bike:', values);
-        },
-    });
+    onSubmit: async (values) => {
+      try {
+        const response = await fetch('http://localhost:8080/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(values),
+        });
+
+        if (!response.ok) {
+          throw new Error('Erro ao enviar dados para a API');
+        }
+
+        const responseData = await response.json();
+        console.log('Resposta da API:', responseData);
+      } catch (error) {
+        console.error('Erro na requisição para a API:', error);
+      }
+    },
+  });
 
     return (
         <div className="cadastro-container">
@@ -58,7 +73,7 @@ const CadastroBike = () => {
                 <div className="d-shape">
                     <div className="text-content">
                         <h1>Bikeisure</h1>
-                        <h3>Etapa 2 - 4</h3>
+                        <h3>Etapa 2 - 3</h3>
                         <p>Preencha o formulário ao lado com as informações da bike assegurada para prosseguimento da abertura do seguro.</p>
                     </div>
                 </div>
