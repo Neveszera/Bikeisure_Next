@@ -37,11 +37,28 @@ const CadastroPessoa = () => {
       confirmarSenha: '',
       concordarTermos: false,
     },
+
     validationSchema: schema,
-    onSubmit: (values) => {
-      // Aqui vamos enviar os dados para o servidor.
-      // mas por enquanto, apenas mostraremos os dados no console.
-      console.log('Dados enviados:', values);
+    onSubmit: async (values) => {
+      try {
+        const response = await fetch('http://localhost:8080/', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(values),
+        });
+
+        if (!response.ok) {
+          throw new Error('Erro ao enviar dados para a API');
+        }
+
+        
+        const responseData = await response.json();
+        console.log('Resposta da API:', responseData);
+      } catch (error) {
+        console.error('Erro na requisição para a API:', error);
+      }
     },
   });
 
@@ -51,7 +68,7 @@ const CadastroPessoa = () => {
         <div className="d-shape">
           <div className="text-content">
             <h1>Bikeisure</h1>
-            <h3>Etapa 1 - 4</h3>
+            <h3>Etapa 1 - 3</h3>
             <p>Preencha o formulário com seus dados pessoais para criar uma conta.</p>
           </div>
         </div>

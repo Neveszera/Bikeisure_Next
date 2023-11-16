@@ -11,6 +11,12 @@ import Sampaio from '../../../public/img/Sampaio.png'
 import Rafael from '../../../public/img/Rafael.jpg'
 import Image from 'next/image';
 import "../../styles/Sobre.css"
+import "../globals.css"
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLinkedin, faInstagram, faGithub } from '@fortawesome/free-brands-svg-icons';
+import '@fortawesome/fontawesome-svg-core/styles.css';
+
 
 const membrosDaEquipe = [
     {
@@ -78,7 +84,7 @@ export default function Sobre() {
 
     return (
         <>
-        <Cabecalho/>
+            <Cabecalho />
             <section className="sobre">
                 <div className="sobre-content">
                     <div className="sobre-text">
@@ -96,8 +102,8 @@ export default function Sobre() {
                         <Image
                             src="/img/ciclista2.png"
                             alt="Desenho Ciclista"
-                            width={500}
-                            height={500}
+                            width={700}
+                            height={700}
                         />
                     </div>
                 </div>
@@ -109,7 +115,7 @@ export default function Sobre() {
                         <Image
                             src={membro.imagem}
                             alt={`Foto de ${membro.nome}`}
-                            width={500}
+                            width={700}
                             height={500}
                         />
                         <h3>{membro.nome}</h3>
@@ -118,19 +124,19 @@ export default function Sobre() {
                         <p>{membro.funcao}</p>
                         <div className="redes-sociais">
                             <a href={membro.linkedin} target="_blank" rel="noopener noreferrer">
-                                <i className="fab fa-linkedin"></i>
+                                <FontAwesomeIcon icon={faLinkedin} />
                             </a>
                             <a href={membro.instagram} target="_blank" rel="noopener noreferrer">
-                                <i className="fab fa-instagram"></i>
+                                <FontAwesomeIcon icon={faInstagram} />
                             </a>
                             <a href={membro.github} target="_blank" rel="noopener noreferrer">
-                                <i className="fab fa-github"></i>
+                                <FontAwesomeIcon icon={faGithub} />
                             </a>
                         </div>
                     </div>
                 ))}
             </section>
-            <Rodape/>
+            <Rodape />
         </>
 
     );
