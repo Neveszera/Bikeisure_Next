@@ -12,4 +12,4 @@
 
 **Tecnologias Utilizadas:** React, TensorFlow.js, Tesseract.js, react-webcam, react-modal
 
-Nota: A validação do número de série está em constante aprimoramento, assim como a detecção de fotos digitais, como aquelas capturadas de outras telas contendo uma bicicleta.
+**Nota:** A validação do número de série está em constante aprimoramento, assim como a detecção de fotos digitais, como aquelas capturadas de outras telas contendo uma bicicleta.
